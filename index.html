@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BE TRANS | Beresetz Eksekutif Trans</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <img src="polosan.png" alt="BE TRANS Logo"> 
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Layanan</a>
+            <a href="#routes">Rute</a>
+            <a href="#instructions">Cara Pesan</a>
+            <a href="#booking" class="btn-cta">Pesan Sekarang</a>
+        </div>
+        <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Eksekutif Door To Door</h1>
+                <p class="tagline">Perjalanan nyaman, aman, dan tepat waktu bersama BE TRANS.</p>
+                <div class="hero-features">
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Terjamin & Aman</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-clock"></i>
+                        <span>Tepat Waktu</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-home"></i>
+                        <span>Door-to-Door</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="booking-card" id="booking">
+                <h3><i class="fas fa-calendar-check"></i> Formulir Pemesanan</h3>
+                <div class="form-grid">
+                    <div class="input-box">
+                        <label><i class="fas fa-user"></i> Nama Lengkap</label>
+                        <input type="text" id="name" placeholder="Masukkan nama lengkap...">
+                    </div>
+                    <div class="input-box">
+                        <label><i class="fas fa-phone"></i> No WhatsApp Aktif</label>
+                        <input type="tel" id="phone" placeholder="08xxxx">
+                    </div>
+                    <div class="input-box">
+                        <label><i class="fas fa-concierge-bell"></i> Layanan</label>
+                        <select id="service">
+                            <option value="Carter/Private">Carter/Private</option>
+                            <option value="Reguler (Leguler)">Reguler (Leguler)</option>
+                            <option value="Paket Ekspres">Paket Ekspres</option>
+                            <option value="Tour Wisata">Tour Wisata</option>
+                            <option value="Antar-Jemput Sekolah">Antar-Jemput Sekolah</option>
+                            <option value="Transportasi Event">Transportasi Event</option>
+                            <option value="Langganan Bulanan">Langganan Bulanan</option>
+                            <option value="Sewa Harian">Sewa Harian</option>
+                        </select>
+                    </div>
+                    <div class="input-box full-width">
+                        <label><i class="fas fa-map-marker-alt"></i> Alamat Penjemputan Lengkap</label>
+                        <input type="text" id="pickup" placeholder="Alamat lengkap penjemputan...">
+                    </div>
+                    <div class="input-box full-width">
+                        <label><i class="fas fa-map-pin"></i> Tujuan Lengkap</label>
+                        <input type="text" id="destination" placeholder="Alamat lengkap tujuan...">
+                    </div>
+                    <div class="input-box">
+                        <label><i class="fas fa-calendar-alt"></i> Tanggal Keberangkatan</label>
+                        <input type="date" id="date">
+                    </div>
+                    <div class="input-box">
+                        <label><i class="fas fa-clock"></i> Waktu Keberangkatan</label>
+                        <input type="time" id="time">
+                    </div>
+                    <div class="input-box">
+                        <label><i class="fas fa-users"></i> Jumlah Penumpang</label>
+                        <input type="number" id="passengers" value="1" min="1" max="20">
+                    </div>
+                    <div class="input-box">
+                        <label><i class="fas fa-credit-card"></i> Metode Pembayaran</label>
+                        <select id="payment">
+                            <option value="Transfer Bank">Transfer Bank</option>
+                            <option value="E-Wallet">E-Wallet</option>
+                            <option value="Tunai/Cash">Tunai/Cash</option>
+                        </select>
+                    </div>
+                </div>
+                <button onclick="sendWA()" class="btn-send">
+                    <i class="fab fa-whatsapp"></i> Kirim via WhatsApp
+                </button>
+                <p class="form-note">Reservasi minimal 1 hari sebelum keberangkatan</p>
+            </div>
+        </div>
+    </header>
+
+    <section id="services" class="section">
+        <h2 class="section-title">Opsi Layanan BE TRANS</h2>
+        <p class="section-subtitle">Pilih layanan sesuai kebutuhan perjalanan Anda</p>
+        
+        <div class="services-container">
+            <div class="service-card detailed">
+                <div class="service-number">1</div>
+                <h3>Carter/Private</h3>
+                <p class="service-desc">Sewa kendaraan eksklusif untuk satu kelompok tanpa penumpang lain</p>
+                <div class="service-details">
+                    <h4><i class="fas fa-star"></i> Keunggulan:</h4>
+                    <ul>
+                        <li>Privasi terjamin untuk kelompok/family</li>
+                        <li>Fleksibel rute & waktu keberangkatan</li>
+                    </ul>
+                    <h4><i class="fas fa-users"></i> Target Pelanggan:</h4>
+                    <p>Keluarga, rombongan wisata, acara khusus</p>
+                </div>
+            </div>
+            
+            <div class="service-card detailed">
+                <div class="service-number">2</div>
+                <h3>Reguler (Leguler)</h3>
+                <p class="service-desc">Transportasi berbagi dengan jadwal keberangkatan tetap</p>
+                <div class="service-details">
+                    <h4><i class="fas fa-star"></i> Keunggulan:</h4>
+                    <ul>
+                        <li>Biaya lebih ekonomis</li>
+                        <li>Cocok untuk perjalanan individu</li>
+                    </ul>
+                    <h4><i class="fas fa-users"></i> Target Pelanggan:</h4>
+                    <p>Pelanggan umum, perjalanan terjadwal</p>
+                </div>
+            </div>
+            
+            <div class="service-card detailed">
+                <div class="service-number">3</div>
+                <h3>Paket Ekspres</h3>
+                <p class="service-desc">Pengiriman paket/dokumen cepat & aman door-to-door</p>
+                <div class="service-details">
+                    <h4><i class="fas fa-star"></i> Keunggulan:</h4>
+                    <ul>
+                        <li>Pengambilan & pengantaran langsung</li>
+                        <li>Waktu lebih fleksibel & cepat</li>
+                    </ul>
+                    <h4><i class="fas fa-users"></i> Target Pelanggan:</h4>
+                    <p>Bisnis kecil, e-commerce, individu</p>
+                </div>
+            </div>
+            
+            <div class="service-card detailed">
+                <div class="service-number">4</div>
+                <h3>Tour Wisata</h3>
+                <p class="service-desc">Paket wisata khusus dengan pemandu (opsional)</p>
+                <div class="service-details">
+                    <h4><i class="fas fa-star"></i> Keunggulan:</h4>
+                    <ul>
+                        <li>Penjemputan door-to-door</li>
+                        <li>Destinasi Tasikmalaya, Bandung, Jakarta</li>
+                        <li>Pemandu wisata tersedia</li>
+                    </ul>
+                    <h4><i class="fas fa-users"></i> Target Pelanggan:</h4>
+                    <p>Keluarga, rombongan sekolah/perusahaan</p>
+                </div>
+            </div>
+            
+            <div class="service-card detailed">
+                <div class="service-number">5</div>
+                <h3>Antar-Jemput Sekolah</h3>
+                <p class="service-desc">Layanan khusus antar-jemput anak sekolah</p>
+                <div class="service-details">
+                    <h4><i class="fas fa-star"></i> Keunggulan:</h4>
+                    <ul>
+                        <li>Waktu sesuai jam sekolah</li>
+                        <li>Pengemudi terlatih & ramah anak</li>
+                    </ul>
+                    <h4><i class="fas fa-users"></i> Target Pelanggan:</h4>
+                    <p>Orang tua yang bekerja/sibuk</p>
+                </div>
+            </div>
+            
+            <div class="service-card detailed">
+                <div class="service-number">6</div>
+                <h3>Transportasi Event</h3>
+                <p class="service-desc">Transportasi untuk acara khusus (pernikahan, seminar, dll)</p>
+                <div class="service-details">
+                    <h4><i class="fas fa-star"></i> Keunggulan:</h4>
+                    <ul>
+                        <li>Kendaraan minivan hingga bus</li>
+                        <li>Dekorasi/branding tersedia</li>
+                    </ul>
+                    <h4><i class="fas fa-users"></i> Target Pelanggan:</h4>
+                    <p>Event organizer, pernikahan, perusahaan</p>
+                </div>
+            </div>
+            
+            <div class="service-card detailed">
+                <div class="service-number">7</div>
+                <h3>Langganan Bulanan</h3>
+                <p class="service-desc">Layanan transportasi rutin dengan sistem langganan</p>
+                <div class="service-details">
+                    <h4><i class="fas fa-star"></i> Keunggulan:</h4>
+                    <ul>
+                        <li>Harga lebih hemat</li>
+                        <li>Jadwal tetap terjamin</li>
+                    </ul>
+                    <h4><i class="fas fa-users"></i> Target Pelanggan:</h4>
+                    <p>Pekerja harian, mahasiswa, pelanggan tetap</p>
+                </div>
+            </div>
+            
+            <div class="service-card detailed">
+                <div class="service-number">8</div>
+                <h3>Sewa Harian</h3>
+                <p class="service-desc">Sewa kendaraan + pengemudi untuk penggunaan harian</p>
+                <div class="service-details">
+                    <h4><i class="fas fa-star"></i> Keunggulan:</h4>
+                    <ul>
+                        <li>Cocok untuk bisnis/wisata lokal</li>
+                        <li>Fleksibel tujuan tanpa batasan</li>
+                    </ul>
+                    <h4><i class="fas fa-users"></i> Target Pelanggan:</h4>
+                    <p>Wisatawan, pebisnis, kebutuhan harian</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="routes" class="section dark-bg">
+        <h2 class="section-title">Rute Layanan Kami</h2>
+        <p class="section-subtitle">Melayani berbagai rute utama dengan armada nyaman</p>
+        
+        <div class="routes-container">
+            <div class="r-card">
+                <div class="route-icon"><i class="fas fa-mountain"></i></div>
+                <h3>Tasikmalaya - Karangnunggal</h3>
+                <p class="route-desc">Tasikmalaya → Bantarkalong → Cipatujah → Ciheras → Karangnunggal → Cibalong → Cikalong → Singaparna → Garut</p>
+                <div class="route-duration">
+                    <i class="fas fa-clock"></i> Estimasi: 2-3 jam
+                </div>
+            </div>
+            <div class="r-card">
+                <div class="route-icon"><i class="fas fa-city"></i></div>
+                <h3>Bandung Raya</h3>
+                <p class="route-desc">Kota Bandung → Kab. Bandung → Bandung Barat → Cimahi → Lembang → Soreang → Majalaya</p>
+                <div class="route-duration">
+                    <i class="fas fa-clock"></i> Estimasi: 1-4 jam
+                </div>
+            </div>
+            <div class="r-card">
+                <div class="route-icon"><i class="fas fa-building"></i></div>
+                <h3>Jakarta & Jabodetabek</h3>
+                <p class="route-desc">Jakarta (Selatan, Timur, Barat, Pusat, Utara) → Cikarang → Karawang → Tangerang → Depok → Bogor → Bekasi → Cibubur → Bandara Soetta</p>
+                <div class="route-duration">
+                    <i class="fas fa-clock"></i> Estimasi: 3-6 jam
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="instructions" class="section">
+        <h2 class="section-title">Instruksi Pemesanan</h2>
+        <p class="section-subtitle">Langkah-langkah mudah memesan layanan BE TRANS</p>
+        
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">1️⃣</div>
+                <h3>Pilih Rute & Jadwal</h3>
+                <p>Tentukan rute perjalanan dan pilih tanggal & jam keberangkatan yang diinginkan.</p>
+                <div class="step-tip">
+                    <i class="fas fa-lightbulb"></i> <strong>Tips:</strong> Pesan minimal 1 hari sebelumnya
+                </div>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">2️⃣</div>
+                <h3>Kirim Pesan WhatsApp</h3>
+                <p>Kirim format berikut ke nomor kami:</p>
+                <div class="message-format">
+                    <p><strong>Nama lengkap:</strong> [Isi nama]</p>
+                    <p><strong>No WhatsApp aktif:</strong> [08xxxx]</p>
+                    <p><strong>Alamat penjemputan:</strong> [Alamat lengkap]</p>
+                    <p><strong>Tujuan:</strong> [Alamat lengkap]</p>
+                    <p><strong>Tanggal & waktu:</strong> [DD/MM/YYYY HH:MM]</p>
+                    <p><strong>Jumlah penumpang:</strong> [Jumlah]</p>
+                    <p><strong>Layanan:</strong> [Pilihan layanan]</p>
+                    <p><strong>Metode pembayaran:</strong> [Transfer/E-Wallet/Cash]</p>
+                </div>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">3️⃣</div>
+                <h3>Konfirmasi Ketersediaan</h3>
+                <p>Tim kami akan memeriksa ketersediaan dan memberikan konfirmasi serta total biaya.</p>
+                <div class="step-tip">
+                    <i class="fas fa-check-circle"></i> Konfirmasi cepat dalam 1-2 jam
+                </div>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">4️⃣</div>
+                <h3>Lakukan Pembayaran</h3>
+                <p>Pilih metode pembayaran yang tersedia:</p>
+                <div class="payment-methods">
+                    <div class="payment-method">
+                        <i class="fas fa-university"></i>
+                        <span>Transfer Bank</span>
+                    </div>
+                    <div class="payment-method">
+                        <i class="fas fa-wallet"></i>
+                        <span>E-Wallet</span>
+                    </div>
+                    <div class="payment-method">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>Cash (Bayar ke Driver)</span>
+                    </div>
+                </div>
+                <p class="note">Kirim bukti transfer via WhatsApp untuk proses pemesanan</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">5️⃣</div>
+                <h3>Tunggu Penjemputan</h3>
+                <p>Siap di lokasi penjemputan sesuai waktu yang disepakati.</p>
+                <div class="step-tip">
+                    <i class="fas fa-car"></i> Driver akan menghubungi sebelum tiba
+                </div>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">6️⃣</div>
+                <h3>Nikmati Perjalanan</h3>
+                <p>Pastikan membawa barang bawaan secukupnya untuk kenyamanan bersama.</p>
+                <div class="step-tip">
+                    <i class="fas fa-headset"></i> Hubungi kami jika ada perubahan
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-info">
+            <h3><i class="fas fa-headset"></i> Kontak Layanan Pelanggan</h3>
+            <div class="contact-buttons">
+                <a href="https://wa.me/6285861461473" class="contact-btn whatsapp">
+                    <i class="fab fa-whatsapp"></i> 0858-6146-1473
+                </a>
+                <a href="https://wa.me/6282116725720" class="contact-btn whatsapp">
+                    <i class="fab fa-whatsapp"></i> 0821-1672-5720
+                </a>
+                <a href="tel:+6285861461473" class="contact-btn phone">
+                    <i class="fas fa-phone"></i> Telepon Sekarang
+                </a>
+            </div>
+            <p class="contact-note">
+                <i class="fas fa-info-circle"></i> Layanan WhatsApp 24 jam untuk informasi & pemesanan
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="polosan.png" alt="BE TRANS Logo" style="height: 60px;">
+                <p>Beresetz Eksekutif Trans</p>
+            </div>
+            <div class="footer-info">
+                <h4>Kontak & Layanan</h4>
+                <p><i class="fab fa-whatsapp"></i> WhatsApp: 0858-6146-1473</p>
+                <p><i class="fab fa-whatsapp"></i> Alternatif: 0821-1672-5720</p>
+                <p><i class="fas fa-clock"></i> Layanan: 24 Jam</p>
+            </div>
+            <div class="footer-links">
+                <h4>Tautan Cepat</h4>
+                <a href="#home">Home</a>
+                <a href="#services">Layanan</a>
+                <a href="#routes">Rute</a>
+                <a href="#instructions">Cara Pesan</a>
+                <a href="#booking">Pesan Sekarang</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 BERESETZ EKSEKUTIF TRANS. Door to Door Service.</p>
+            <p class="footer-tagline">Nyaman • Aman • Tepat Waktu</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+          </html>
