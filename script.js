@@ -23,8 +23,8 @@ function sendWA() {
 
     // WhatsApp numbers (can choose which one to use)
     const waNumbers = [
-        "6285861461473",  // Primary number
-        "6282116725720"   // Alternative number
+        "6281949388429",  // Primary number - 0819-4938-8429
+        "6281949388429"   // Alternative number - 0819-4938-8429
     ];
 
     // Validation
