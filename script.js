@@ -1,177 +1,95 @@
-// WhatsApp Booking Function
-function sendWA() {
-    // Get form values
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const service = document.getElementById('service').value;
-    const pickup = document.getElementById('pickup').value;
-    const destination = document.getElementById('destination').value;
-    const date = document.getElementById('date').value;
-    const time = document.getElementById('time').value;
-    const passengers = document.getElementById('passengers').value;
-    const payment = document.getElementById('payment').value;
+const JADWAL = {
+  "Tasikmalaya - Karangnunggal": ["06:00 WIB","08:00 WIB","10:00 WIB","13:00 WIB","15:00 WIB","17:00 WIB"],
+  "Tasikmalaya - Bandung": ["06:00 WIB","08:00 WIB","10:00 WIB","13:00 WIB","16:00 WIB","19:00 WIB"],
+  "Tasikmalaya - Jakarta": ["06:00 WIB","08:00 WIB","12:00 WIB","16:00 WIB","19:00 WIB"],
+  "Tasikmalaya - Jabodetabek": ["06:00 WIB","08:00 WIB","12:00 WIB","16:00 WIB","19:00 WIB"],
+  "Lainnya / Custom": ["06:00 WIB","08:00 WIB","10:00 WIB","13:00 WIB","16:00 WIB","19:00 WIB"]
+};
 
-    // Format date and time
-    const dateObj = new Date(date);
-    const formattedDate = dateObj.toLocaleDateString('id-ID', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
-    });
-    const formattedTime = time;
-    const datetime = `${formattedDate} ${formattedTime}`;
-
-    // WhatsApp numbers (can choose which one to use)
-    const waNumbers = [
-        "6281949388429",  // Primary number - 0819-4938-8429
-        "6281949388429"   // Alternative number - 0819-4938-8429
-    ];
-
-    // Validation
-    if (!name || !phone || !pickup || !destination || !date || !time) {
-        alert("Mohon lengkapi semua data yang diperlukan (Nama, WhatsApp, Alamat, Tujuan, Tanggal & Waktu)!");
-        return;
-    }
-
-    // Format the message according to instructions
-    const message = `Halo BE TRANS, saya ingin pesan travel:%0A%0A` +
-        `*Nama lengkap:* ${name}%0A` +
-        `*No WhatsApp aktif:* ${phone}%0A` +
-        `*Alamat penjemputan lengkap:* ${pickup}%0A` +
-        `*Tujuan lengkap:* ${destination}%0A` +
-        `*Tanggal dan waktu keberangkatan:* ${datetime}%0A` +
-        `*Jumlah penumpang:* ${passengers}%0A` +
-        `*Layanan yang dipesan:* ${service}%0A` +
-        `*Metode pembayaran:* ${payment}%0A%0A` +
-        `Mohon segera dikonfirmasi ya, terima kasih!`;
-
-    // Open WhatsApp (using primary number)
-    window.open(`https://wa.me/${waNumbers[0]}?text=${message}`, '_blank');
+function pilihLayanan(nama){
+  document.getElementById('service').value = nama;
+  updateForm();
+  document.getElementById('booking').scrollIntoView({behavior:'smooth'});
 }
+function pesanJadwal(rute, jam){
+  document.getElementById('service').value = 'Reguler (Leguler)';
+  document.getElementById('routeSelect').value = rute;
+  updateForm();
+  document.getElementById('jadwalReguler').value = jam;
+  document.getElementById('booking').scrollIntoView({behavior:'smooth'});
+}
+function updateForm(){
+  const service = document.getElementById('service').value;
+  const rute = document.getElementById('routeSelect').value;
+  const penumpangBox = document.getElementById('penumpang-box');
+  const paketFields = document.getElementById('paket-fields');
+  const jadwalBox = document.getElementById('jadwal-reguler-box');
+  const jamBebasBox = document.getElementById('jam-bebas-box');
+  const jadwalSelect = document.getElementById('jadwalReguler');
 
-// Set minimum date to today
-document.addEventListener('DOMContentLoaded', function() {
-    // Set min date for booking
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('date').min = today;
-    
-    // Set default time to next hour
-    const now = new Date();
-    const nextHour = new Date(now.getTime() + 60 * 60 * 1000);
-    const hours = nextHour.getHours().toString().padStart(2, '0');
-    const minutes = nextHour.getMinutes().toString().padStart(2, '0');
-    document.getElementById('time').value = `${hours}:${minutes}`;
-    
-    // Mobile menu toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.background = 'rgba(0,0,0,0.95)';
-                navLinks.style.padding = '20px';
-                navLinks.style.gap = '15px';
-                navLinks.style.borderTop = '2px solid var(--main)';
-            }
-        });
-    }
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            if (this.getAttribute('href') === '#') return;
-            
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#home') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    const offset = 80;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - offset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (window.innerWidth <= 768) {
-                        navLinks.style.display = 'none';
-                    }
-                }
-            }
-        });
-    });
-    
-    // Form validation enhancement
-    const formInputs = document.querySelectorAll('.booking-card input, .booking-card select');
-    formInputs.forEach(input => {
-        input.addEventListener('blur', function() {
-            if (this.value.trim() === '') {
-                this.style.borderColor = '#ff4444';
-            } else {
-                this.style.borderColor = '#27ae60';
-                setTimeout(() => {
-                    this.style.borderColor = 'var(--gray-dark)';
-                }, 1500);
-            }
-        });
-    });
-    
-    // Service card hover effect enhancement
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px)';
-        });
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
-    
-    // Update passenger input limits based on service type
-    const serviceSelect = document.getElementById('service');
-    const passengerInput = document.getElementById('passengers');
-    
-    serviceSelect.addEventListener('change', function() {
-        const service = this.value;
-        
-        if (service.includes('Carter') || service.includes('Private')) {
-            passengerInput.max = 20;
-            passengerInput.placeholder = "Maks 20 penumpang";
-        } else if (service.includes('Reguler')) {
-            passengerInput.max = 8;
-            passengerInput.placeholder = "Maks 8 penumpang";
-        } else if (service.includes('Sewa Harian')) {
-            passengerInput.max = 15;
-            passengerInput.placeholder = "Maks 15 penumpang";
-        } else {
-            passengerInput.max = 20;
-            passengerInput.placeholder = "Jumlah penumpang";
-        }
-    });
-});
+  // Update pilihan jam sesuai rute
+  if(JADWAL[rute]){
+    jadwalSelect.innerHTML = JADWAL[rute].map(j=>`<option value="${j}">${j} ${j.startsWith('06')||j.startsWith('08')?' - Pagi':j.startsWith('10')||j.startsWith('12')||j.startsWith('13')?' - Siang':j.startsWith('15')||j.startsWith('16')?' - Sore':' - Malam'}</option>`).join('');
+  }
 
-// Add scroll effect to navbar
-window.addEventListener('scroll', function() {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 100) {
-        nav.style.background = 'rgba(0,0,0,0.98)';
-        nav.style.padding = '10px 5%';
-        nav.style.boxShadow = '0 5px 20px rgba(0,0,0,0.3)';
-    } else {
-        nav.style.background = 'rgba(0,0,0,0.95)';
-        nav.style.padding = '15px 5%';
-        nav.style.boxShadow = 'none';
-    }
+  if(service === 'Paket Ekspres'){
+    penumpangBox.style.display='none';
+    paketFields.style.display='block';
+    jadwalBox.style.display='none';
+    jamBebasBox.style.display='block';
+  } else if(service === 'Reguler (Leguler)'){
+    penumpangBox.style.display='block';
+    paketFields.style.display='none';
+    jadwalBox.style.display='block';
+    jamBebasBox.style.display='none';
+    document.getElementById('passengers').max = 8;
+  } else {
+    penumpangBox.style.display='block';
+    paketFields.style.display='none';
+    jadwalBox.style.display='none';
+    jamBebasBox.style.display='block';
+    document.getElementById('passengers').max = 20;
+  }
+}
+function sendWA(){
+  const name=document.getElementById('name').value;
+  const phone=document.getElementById('phone').value;
+  const service=document.getElementById('service').value;
+  const rute=document.getElementById('routeSelect').value;
+  const pickup=document.getElementById('pickup').value;
+  const destination=document.getElementById('destination').value;
+  const date=document.getElementById('date').value;
+  const jadwalReguler=document.getElementById('jadwalReguler').value;
+  const jamBebas=document.getElementById('time').value;
+  const jam = service==='Reguler (Leguler)' ? jadwalReguler : jamBebas;
+  const passengers=document.getElementById('passengers').value;
+  const payment=document.getElementById('payment').value;
+  const jenisPaket=document.getElementById('jenisPaket')?.value||'';
+  const jumlahPaket=document.getElementById('jumlahPaket')?.value||'';
+  const namaBarang=document.getElementById('namaBarang')?.value||'';
+  const beratPaket=document.getElementById('beratPaket')?.value||'';
+
+  if(!name||!phone||!pickup||!destination||!date){alert("Lengkapi semua data dulu bro!");return;}
+  if(service==='Paket Ekspres' && !namaBarang){alert("Isi Nama Barang / Isi Paket dulu!");return;}
+
+  const d=new Date(date);
+  const tgl=d.toLocaleDateString('id-ID',{day:'2-digit',month:'2-digit',year:'numeric'});
+  let msg=`Halo BE TRANS, saya mau pesan:%0A%0A*Nama:* ${name}%0A*No WA:* ${phone}%0A*Rute:* ${rute}%0A*Penjemputan:* ${pickup}%0A*Tujuan:* ${destination}%0A*Tanggal:* ${tgl}%0A*Jam Berangkat:* ${jam} ${service==='Reguler (Leguler)'?'(JADWAL REGULER)':''}%0A*Layanan:* ${service}%0A`;
+  if(service==='Paket Ekspres'){
+    msg+=`*Jenis Paket:* ${jenisPaket}%0A*Nama Barang:* ${namaBarang}%0A*Jumlah:* ${jumlahPaket} koli%0A*Berat:* ${beratPaket}%0A`;
+  } else {
+    msg+=`*Jumlah Penumpang:* ${passengers} orang%0A`;
+  }
+  msg+=`*Pembayaran:* ${payment}%0A%0AMohon konfirmasi ya, terima kasih!`;
+  window.open(`https://wa.me/6281949388429?text=${msg}`,'_blank');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('date').min=new Date().toISOString().split('T')[0];
+  document.getElementById('time').value='08:00';
+  document.getElementById('service').addEventListener('change',updateForm);
+  document.getElementById('routeSelect').addEventListener('change',updateForm);
+  updateForm();
+  const toggle=document.querySelector('.menu-toggle');
+  const links=document.querySelector('.nav-links');
+  if(toggle){toggle.addEventListener('click',()=>{links.style.display=links.style.display==='flex'?'none':'flex'; if(links.style.display==='flex'){links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.width='100%';links.style.background='rgba(0,0,0,0.95)';links.style.padding='20px';}});}
 });
