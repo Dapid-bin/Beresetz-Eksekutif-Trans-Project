@@ -1,13 +1,15 @@
 :root {
-    --main: #f39c12;
-    --main-dark: #d35400;
-    --dark: #111111;
-    --dark-light: #1a1a1a;
+    --main: #ff6b00;
+    --main-dark: #e65c00;
+    --dark: #0a0a0a;
+    --dark-light: #141414;
+    --dark-card: #1a1a1a;
     --light: #ffffff;
-    --gray: #f4f4f4;
-    --gray-dark: #e0e0e0;
+    --gray: #1e1e1e;
+    --gray-dark: #333333;
     --success: #27ae60;
     --whatsapp: #25D366;
+    --text-gray: #b8b8b8;
 }
 
 * {
@@ -16,8 +18,8 @@
 }
 
 body { 
-    background: var(--light); 
-    color: var(--dark); 
+    background: var(--dark); 
+    color: #fff; 
     overflow-x: hidden;
     line-height: 1.6;
 }
@@ -52,14 +54,14 @@ nav {
 }
 
 .btn-cta {
-    background: var(--main); color: var(--dark) !important;
+    background: var(--main); color: #fff !important;
     padding: 10px 20px; border-radius: 50px; font-weight: 700;
-    transition: 0.3s;
+    transition: 0.3s; box-shadow: 0 4px 15px rgba(255,107,0,.4);
 }
 
 .btn-cta:hover {
     background: var(--main-dark); color: white !important;
-    transform: translateY(-3px); box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+    transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 107, 0, 0.5);
 }
 
 .menu-toggle {
@@ -67,16 +69,19 @@ nav {
     color: white; font-size: 1.5rem; cursor: pointer;
 }
 
-/* Hero & Form */
+/* Hero & Form - BACKGROUND GELAP ELEGAN */
 .hero {
-    height: 100vh; background: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80') center/cover fixed;
+    min-height: 100vh; 
+    background:
+        linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(20,20,20,0.88) 50%, rgba(255,107,0,0.18) 100%),
+        radial-gradient(circle at 85% 20%, rgba(255,107,0,.28) 0%, transparent 50%),
+        #0a0a0a;
     display: flex; align-items: center; justify-content: center; position: relative;
-    padding: 100px 5% 50px; min-height: 800px;
+    padding: 120px 5% 50px; min-height: 800px;
 }
 
 .hero-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
+    display: none;
 }
 
 .hero-content {
@@ -96,7 +101,7 @@ nav {
 }
 
 .hero-text .tagline {
-    font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;
+    font-size: 1.2rem; margin-bottom: 30px; color: #d6d6d6;
 }
 
 .hero-features {
@@ -106,23 +111,24 @@ nav {
 
 .feature {
     display: flex; align-items: center; gap: 10px;
-    background: rgba(255,255,255,0.1); padding: 10px 20px;
+    background: rgba(255,255,255,0.08); padding: 10px 20px;
     border-radius: 50px; backdrop-filter: blur(5px);
+    border: 1px solid #333; border-left: 3px solid var(--main);
 }
 
 .feature i { color: var(--main); }
 
 .booking-card {
     background: white; padding: 30px; border-radius: 15px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3); flex: 1; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 0 3px var(--main); flex: 1; 
     min-width: 350px; max-width: 500px;
-    border-top: 5px solid var(--main);
+    border-top: 5px solid var(--main); color: #111;
 }
 
 .booking-card h3 { 
     margin-bottom: 25px; border-left: 5px solid var(--main); 
     padding-left: 15px; display: flex; align-items: center; gap: 10px;
-    font-size: 1.3rem;
+    font-size: 1.3rem; color: #111;
 }
 
 .booking-card h3 i { color: var(--main); }
@@ -136,19 +142,19 @@ nav {
 
 .input-box label { 
     font-size: 0.85rem; font-weight: 600; 
-    display: block; margin-bottom: 8px; color: var(--dark);
+    display: block; margin-bottom: 8px; color: #111;
     display: flex; align-items: center; gap: 8px;
 }
 
 .input-box label i { color: var(--main); font-size: 0.9rem; }
 
 .input-box input, .input-box select {
-    width: 100%; padding: 12px 15px; border: 2px solid var(--gray-dark);
-    border-radius: 8px; font-size: 0.95rem; transition: 0.3s;
+    width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0;
+    border-radius: 8px; font-size: 0.95rem; transition: 0.3s; background: #fafafa; color: #111;
 }
 
 .input-box input:focus, .input-box select:focus {
-    outline: none; border-color: var(--main); box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.1);
+    outline: none; border-color: var(--main); box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.15); background: #fff;
 }
 
 .btn-send {
@@ -171,12 +177,12 @@ nav {
 
 /* Services */
 .section {
-    padding: 80px 5%; 
+    padding: 80px 5%; background: #0a0a0a;
 }
 
 .section-title {
     text-align: center; margin-bottom: 20px; 
-    font-size: 2.5rem; font-weight: 800;
+    font-size: 2.5rem; font-weight: 800; color: #fff;
     position: relative; display: inline-block;
     left: 50%; transform: translateX(-50%);
 }
@@ -188,7 +194,7 @@ nav {
 }
 
 .section-subtitle {
-    text-align: center; color: #666; margin-bottom: 50px;
+    text-align: center; color: #aaa; margin-bottom: 50px;
     font-size: 1.1rem; max-width: 700px; margin-left: auto;
     margin-right: auto;
 }
@@ -199,14 +205,14 @@ nav {
 }
 
 .service-card {
-    background: white; border-radius: 15px; padding: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: 0.3s;
-    border: 2px solid transparent; position: relative;
+    background: #141414; border-radius: 15px; padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: 0.3s;
+    border: 2px solid #2a2a2a; position: relative;
     overflow: hidden;
 }
 
 .service-card:hover {
-    transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.5);
     border-color: var(--main);
 }
 
@@ -219,22 +225,22 @@ nav {
 }
 
 .service-card h3 {
-    margin-bottom: 10px; color: var(--dark); font-size: 1.3rem;
+    margin-bottom: 10px; color: #fff; font-size: 1.3rem;
     padding-right: 50px;
 }
 
 .service-desc {
-    color: #666; font-size: 0.95rem; margin-bottom: 20px;
+    color: #aaa; font-size: 0.95rem; margin-bottom: 20px;
     line-height: 1.5;
 }
 
 .service-details {
-    border-top: 1px solid var(--gray-dark); padding-top: 20px;
+    border-top: 1px solid #333; padding-top: 20px;
     margin-top: 20px;
 }
 
 .service-details h4 {
-    color: var(--dark); font-size: 1rem; margin-bottom: 10px;
+    color: var(--main); font-size: 1rem; margin-bottom: 10px;
     display: flex; align-items: center; gap: 8px;
 }
 
@@ -243,16 +249,16 @@ nav {
 }
 
 .service-details li {
-    margin-bottom: 5px; font-size: 0.9rem; color: #555;
+    margin-bottom: 5px; font-size: 0.9rem; color: #ccc;
 }
 
 .service-details p {
-    font-size: 0.9rem; color: #555; line-height: 1.5;
+    font-size: 0.9rem; color: #ccc; line-height: 1.5;
 }
 
 /* Routes */
 .dark-bg {
-    background: var(--dark-light); color: white;
+    background: #111111; color: white;
 }
 
 .dark-bg .section-title { color: white; }
@@ -271,12 +277,12 @@ nav {
 }
 
 .r-card:hover {
-    background: rgba(255,255,255,0.1); transform: translateX(10px);
+    background: rgba(255,255,255,0.08); transform: translateX(10px);
 }
 
 .route-icon {
     position: absolute; top: 30px; right: 30px;
-    font-size: 2rem; color: var(--main); opacity: 0.3;
+    font-size: 2rem; color: var(--main); opacity: 0.4;
 }
 
 .r-card h3 {
@@ -291,7 +297,7 @@ nav {
 
 .route-duration {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(243, 156, 18, 0.2); padding: 8px 15px;
+    background: rgba(255, 107, 0, 0.2); padding: 8px 15px;
     border-radius: 50px; font-size: 0.9rem; color: var(--main);
     margin-top: 10px;
 }
@@ -303,13 +309,13 @@ nav {
 }
 
 .step-card {
-    background: white; border-radius: 15px; padding: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: 0.3s;
-    border-top: 4px solid var(--main);
+    background: #141414; border-radius: 15px; padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: 0.3s;
+    border-top: 4px solid var(--main); border: 1px solid #2a2a2a;
 }
 
 .step-card:hover {
-    transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.5); border-color: var(--main);
 }
 
 .step-number {
@@ -317,27 +323,27 @@ nav {
 }
 
 .step-card h3 {
-    margin-bottom: 15px; color: var(--dark); font-size: 1.3rem;
+    margin-bottom: 15px; color: #fff; font-size: 1.3rem;
 }
 
 .step-card p {
-    color: #666; margin-bottom: 15px; line-height: 1.6;
+    color: #aaa; margin-bottom: 15px; line-height: 1.6;
 }
 
 .message-format {
-    background: var(--gray); border-radius: 10px; padding: 20px;
+    background: #0a0a0a; border-radius: 10px; padding: 20px;
     margin-top: 15px; font-family: 'Courier New', monospace;
     font-size: 0.9rem; border-left: 3px solid var(--main);
 }
 
 .message-format p {
-    margin-bottom: 8px; color: #333;
+    margin-bottom: 8px; color: #ccc;
 }
 
 .step-tip {
-    background: rgba(243, 156, 18, 0.1); padding: 12px 15px;
+    background: rgba(255, 107, 0, 0.12); padding: 12px 15px;
     border-radius: 8px; margin-top: 15px; display: flex;
-    align-items: center; gap: 10px; color: var(--main-dark);
+    align-items: center; gap: 10px; color: #ffb066;
     font-size: 0.9rem;
 }
 
@@ -348,14 +354,14 @@ nav {
 
 .payment-method {
     display: flex; align-items: center; gap: 8px;
-    background: var(--gray); padding: 10px 15px;
-    border-radius: 8px; font-size: 0.9rem;
+    background: #1e1e1e; padding: 10px 15px;
+    border-radius: 8px; font-size: 0.9rem; color: #ddd; border: 1px solid #333;
 }
 
 .payment-method i { color: var(--main); }
 
 .note {
-    font-size: 0.85rem; color: #666; font-style: italic;
+    font-size: 0.85rem; color: #888; font-style: italic;
     margin-top: 10px;
 }
 
@@ -384,7 +390,7 @@ nav {
 }
 
 .contact-btn.whatsapp {
-    background: white; color: var(--dark);
+    background: white; color: #111;
 }
 
 .contact-btn.whatsapp:hover {
@@ -398,7 +404,7 @@ nav {
 }
 
 .contact-btn.phone:hover {
-    background: white; color: var(--dark); transform: translateY(-3px);
+    background: white; color: #111; transform: translateY(-3px);
 }
 
 .contact-note {
@@ -408,7 +414,7 @@ nav {
 
 /* Footer */
 footer {
-    background: var(--dark); color: white; padding: 50px 5% 30px;
+    background: #000; color: white; padding: 50px 5% 30px; border-top: 2px solid var(--main);
 }
 
 .footer-content {
@@ -420,7 +426,7 @@ footer {
 .footer-logo p { color: #aaa; font-size: 0.9rem; }
 
 .footer-info h4, .footer-links h4 {
-    color: white; margin-bottom: 20px; font-size: 1.1rem;
+    color: var(--main); margin-bottom: 20px; font-size: 1.1rem;
 }
 
 .footer-info p {
